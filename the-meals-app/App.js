@@ -5,6 +5,7 @@ import * as Font from 'expo-font';
 import { enableScreens } from 'react-native-screens';
 
 import MealsNavigator from './navigation/MealsNavigator';
+import Colors from './constants/Colors';
 
 // enableScreens();
 
@@ -37,7 +38,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.background,
     alignItems: 'center',
     justifyContent: 'center',
   },

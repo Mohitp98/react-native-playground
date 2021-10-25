@@ -1,22 +1,22 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, FlatList } from "react-native";
+import MealList from "../components/MealList";
 
-import { CATEGORIES } from "../data/dummy-data";
+import { CATEGORIES, MEALS } from "../data/dummy-data";
 
 const CategoryMeals = (props) => {
+  const catColor = props.navigation.getParam("categoryColor");
   const catID = props.navigation.getParam("categoryID");
-  const selectedCategory = CATEGORIES.find((cat) => cat.id === catID);
+  const displayMeals = MEALS.filter(
+    (meal) => meal.categoryIds.indexOf(catID) >= 0
+  );
+
   return (
-    <View style={styles.screen}>
-      <Text>CategoryMeals Screen Works!</Text>
-      <Text>{selectedCategory.title}</Text>
-      <Button
-        title="Take me to Meal Details"
-        onPress={() => {
-          props.navigation.navigate("MealDetail");
-        }}
-      />
-    </View>
+    <MealList
+      listdata={displayMeals}
+      navigation={props.navigation}
+      catColor={catColor}
+    />
   );
 };
 
@@ -29,12 +29,6 @@ CategoryMeals.navigationOptions = (navigationData) => {
   };
 };
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
+const styles = StyleSheet.create({});
 
 export default CategoryMeals;

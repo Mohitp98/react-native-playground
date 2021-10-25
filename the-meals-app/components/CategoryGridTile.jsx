@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     margin: 15,
     height: 150,
     borderRadius: 10,
-    overflow: "hidden"
+    // overflow: "hidden",
   },
 
   container: {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.26,
     shadowOffset: { width: 0, height: 2 },
     borderRadius: 10,
-    elevation: 3,
+    elevation: 5,
     padding: 15,
   },
 
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: "poppins-bold",
     textAlign: "right",
-    color: Colors.black,
+    color: "snow",
   },
 });
 
