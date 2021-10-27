@@ -1,10 +1,6 @@
 import React from "react";
 import { StyleSheet, FlatList, View } from "react-native";
-import {
-  HeaderButtons,
-  Item,
-} from "react-navigation-header-buttons";
-
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import AppText from "../components/AppText";
 import CategoryGridTile from "../components/CategoryGridTile";
 import CustomHeaderButton from "../components/HeaderButton";
@@ -46,13 +42,21 @@ const Categories = (props) => {
   );
 };
 
-Categories.navigationOptions = {
-  headerTitle: "Categories",
-  // headerLeft: (
-  //   <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-  //     <Item title="Menu" iconName="icon-menu" onPress={() => {}}></Item>
-  //   </HeaderButtons>
-  // ),
+Categories.navigationOptions = (navData) => {
+  return {
+    headerTitle: "Categories",
+    headerLeft: () => (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title="Menu"
+          iconName="ios-menu"
+          onPress={() => {
+            navData.navigation.toggleDrawer();
+          }}
+        ></Item>
+      </HeaderButtons>
+    ),
+  };
 };
 
 const styles = StyleSheet.create({

@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
 
   desc: {
     color: Colors.black,
+    fontFamily: "poppins-semibold"
   },
 });
 

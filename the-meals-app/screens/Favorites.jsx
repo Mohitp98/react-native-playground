@@ -1,16 +1,32 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { useSelector } from "react-redux";
+
+import CustomHeaderButton from "../components/HeaderButton";
 import MealList from "../components/MealList";
-import { MEALS } from "../data/dummy-data";
 
 const Favorites = (props) => {
-  const favMeals = MEALS.filter((meal) => meal.id === "m1" || meal.id === "m2");
-  // console.log("[DEBUG]", favMeals);
+  const favMeals = useSelector((state) => state.meals.meals);
+
   return <MealList listdata={favMeals} navigation={props.navigation} />;
 };
 
-Favorites.navigationOptions = {
-  headerTitle: "Your Favorites",
+Favorites.navigationOptions = (navData) => {
+  return {
+    headerTitle: "Your Fav!",
+    headerLeft: () => (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title="Menu"
+          iconName="ios-menu"
+          onPress={() => {
+            navData.navigation.toggleDrawer();
+          }}
+        ></Item>
+      </HeaderButtons>
+    ),
+  };
 };
 
 const styles = StyleSheet.create({
