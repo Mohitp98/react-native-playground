@@ -7,14 +7,14 @@ import CustomHeaderButton from "../components/HeaderButton";
 import MealList from "../components/MealList";
 
 const Favorites = (props) => {
-  const favMeals = useSelector((state) => state.meals.meals);
-
+  const favMeals = useSelector((state) => state.meals.favoriteMeals);
+  // console.log("[DENUG]", favMeals);
   return <MealList listdata={favMeals} navigation={props.navigation} />;
 };
 
 Favorites.navigationOptions = (navData) => {
   return {
-    headerTitle: "Your Fav!",
+    headerTitle: "Your Favorites",
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
